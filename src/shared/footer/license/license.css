@@ -1,0 +1,19 @@
+.license {
+  display: flex;
+  flex-direction: column;
+  margin: 50px 0;
+  line-height: 20px;
+}
+.license__header {
+  text-align: center;
+  font-size: 30px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  line-height: 40px;
+}
+.license__paragraph {
+  text-align: justify;
+  margin-top: 30px;
+  line-height: 25px;
+  font-size: 16px;
+}

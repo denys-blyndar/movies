@@ -1,0 +1,30 @@
+.not-found {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 80vh;
+}
+.not-found header {
+  margin-top: 10px;
+  font-size: 200px;
+  font-weight: 500;
+  line-height: 200px;
+  color: #65a0d6;
+}
+.not-found h2 {
+  margin-top: 10px;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 30px;
+  color: #3b3a3e;
+}
+.not-found p {
+  margin-top: 10px;
+  font-size: 16px;
+  line-height: 10px;
+  color: #65a0d6;
+}
+.not-found p:hover {
+  text-decoration: underline;
+}

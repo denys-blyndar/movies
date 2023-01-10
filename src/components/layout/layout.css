@@ -1,0 +1,9 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.layout__children {
+  margin-top: 100px;
+  padding: 0 100px;
+}
