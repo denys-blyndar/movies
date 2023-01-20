@@ -3,7 +3,6 @@ import './modal.css';
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { func, bool, string } from 'prop-types';
-import { Toaster } from 'react-hot-toast';
 
 import CustomButton from '../custom-button';
 
@@ -31,7 +30,6 @@ class Modal extends Component {
                 <div className="modal__button-group">
                   <div className="modal__button-group__confirm">
                     <CustomButton text="Delete" onClick={remove} />
-                    <Toaster position="top-center" />
                   </div>
                   <CustomButton text="Cancel" onClick={modalHidden} />
                 </div>

@@ -3,7 +3,6 @@ import './add-movie.css';
 import React from 'react';
 import { func } from 'prop-types';
 import { Form, Field } from 'react-final-form';
-import { Toaster } from 'react-hot-toast';
 import { connect } from 'react-redux';
 
 import CustomButton from '../../shared/custom-button';
@@ -65,10 +64,7 @@ const AddMovie = ({ dispatch }) => {
                 validate={isRequired}
               />
             </div>
-            <div>
-              <CustomButton type="submit" text="Add movie" />
-              <Toaster position="top-center" />
-            </div>
+            <CustomButton type="submit" text="Add movie" />
           </form>
         )}
       </Form>

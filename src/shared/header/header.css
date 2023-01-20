@@ -31,27 +31,14 @@
   text-transform: uppercase;
   letter-spacing: 1px;
 }
-.header__container .nav {
+.header__item {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
   height: 100%;
-}
-.header__container .nav__list {
-  display: flex;
-  flex-direction: row;
-  list-style: none;
   padding: 0;
   margin: 0;
-}
-.header__container .nav__list :first-child {
-  padding: 0;
-}
-.header__container .nav__list__item {
-  display: flex;
-  align-items: center;
-  height: 100%;
-  padding-left: 20px;
   font-size: 16px;
   letter-spacing: 0.5px;
+}
+.header__item:hover {
+  color: #d9dce1;
 }

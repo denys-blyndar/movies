@@ -23,7 +23,7 @@
   padding-right: 5px;
   cursor: pointer;
 }
-.footer__container .footer-copy {
+.footer-copy {
   padding-right: 50px;
   font-weight: 500;
   letter-spacing: 0.5px;
@@ -31,13 +31,12 @@
 }
 .footer__item {
   display: flex;
-  flex-direction: row;
   height: 100%;
   padding: 0;
   margin: 0;
   letter-spacing: 0.5px;
 }
-.footer__container .footer__item:hover {
+.footer__item:hover {
   color: #65a0d6;
   text-decoration: underline;
 }

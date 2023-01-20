@@ -9,8 +9,6 @@ import {
   ADD_MOVIE_ERROR,
   DELETE_MOVIE_SUCCESS,
   DELETE_MOVIE_ERROR,
-  IMPORT_MOVIES_SUCCESS,
-  IMPORT_MOVIES_ERROR,
 } from './types';
 
 axios.defaults.baseURL = process.env.REACT_APP_API_URL;
@@ -48,15 +46,5 @@ export const deleteMovie = (id) => async (dispatch) => {
   } catch (error) {
     dispatch({ type: DELETE_MOVIE_ERROR, payload: error });
     toast.error('Error occurred while removing!');
-  }
-};
-
-export const importMovies = (file) => async (dispatch) => {
-  try {
-    const response = await axios.post('/import-movies', file);
-
-    dispatch({ type: IMPORT_MOVIES_SUCCESS, payload: response.data });
-  } catch (error) {
-    dispatch({ type: IMPORT_MOVIES_ERROR, payload: error });
   }
 };
