@@ -6,7 +6,7 @@ const cors = require('cors');
 const movies = require('./routes');
 
 const app = express();
-const port = 5000;
+const port = 3000;
 const dbURI = 'mongodb://localhost:27017/movies';
 
 app.use(bodyParser.json());

@@ -1,17 +1,17 @@
 import './search-bar.css';
 
 import React, { useState } from 'react';
-import { func, array } from 'prop-types';
+import { func } from 'prop-types';
 
 import CustomInput from '../../shared/custom-input';
 import MagnifyIcon from '../../icons/magnify-icon.svg';
 
-const SearchBar = ({ onSubmit, data }) => {
+const SearchBar = ({ onSubmit }) => {
   const [value, setValue] = useState('');
 
   const onFormSubmit = (event) => {
     event.preventDefault();
-    onSubmit(data, value.toLowerCase());
+    onSubmit(value.toLowerCase());
   };
 
   return (
@@ -35,7 +35,6 @@ const SearchBar = ({ onSubmit, data }) => {
 
 SearchBar.propTypes = {
   onSubmit: func,
-  data: array,
 };
 
 export default SearchBar;

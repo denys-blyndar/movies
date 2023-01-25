@@ -25,31 +25,34 @@ class Home extends Component {
 
     const sortMovies = (data) => {
       data.sort((a, b) => a.title.localeCompare(b.title));
-
-      if (!sort) {
-        this.setState({ movies: data });
-      } else {
-        this.setState({ movies: data.reverse() });
-      }
+      this.setState({ movies: sort ? data.reverse() : data });
     };
 
-    const searchMovie = (data, value) => {
-      const filtered = movies.filter(({ title, year, format, stars }) => {
-        return (
-          title.toLowerCase().includes(value) ||
-          year.toString().includes(value) ||
-          format.toLowerCase().includes(value) ||
-          stars.some((star) => star.toLowerCase().includes(value))
-        );
+    const sanitizeMovieValue = (value) => value.toString().toLowerCase();
+
+    const getSearchCondition = (movie, query) => {
+      if (!movie) {
+        return false;
+      }
+
+      return Object.keys(movie).some((key) => {
+        if (Array.isArray(movie[key])) {
+          return movie[key].some((arr) => arr.includes(query));
+        }
+
+        return sanitizeMovieValue(movie[key]).includes(query);
       });
-
-      if (!value) {
-        this.setState({ movies: data });
-      } else {
-        this.setState({ movies: filtered });
-      }
     };
 
+    const searchMovie = (value) => {
+      this.setState({
+        movies: value
+          ? movies.filter((movie) => getSearchCondition(movie, value))
+          : this.props.movies,
+      });
+    };
+
+    // TODO: Move to component `selected-movie`
     const renderItem = () => {
       return (
         <div className="movie-shown">
@@ -74,6 +77,7 @@ class Home extends Component {
       );
     };
 
+    // TODO: Move to separate component `list`
     const renderList = () => {
       return movies.map((movie) => {
         return (
@@ -125,7 +129,7 @@ class Home extends Component {
           }
         />
         <div className="home__search-section">
-          <SearchBar onSubmit={searchMovie} data={movies} />
+          <SearchBar onSubmit={searchMovie} />
           <CustomButton
             text="Sort by title (A-Z)"
             onClick={() => {

@@ -1,9 +1,8 @@
 import './add-movie.css';
 
 import React from 'react';
-import { func } from 'prop-types';
 import { Form, Field } from 'react-final-form';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import CustomButton from '../../shared/custom-button';
 import CustomInput from '../../shared/custom-input';
@@ -11,7 +10,9 @@ import CustomTextArea from '../../shared/custom-textarea';
 import { isRequired, isNumber, isYear, composeValidators } from '../../shared/validators';
 import { addMovie } from '../../store/actions';
 
-const AddMovie = ({ dispatch }) => {
+const AddMovie = () => {
+  const dispatch = useDispatch();
+
   const onFormSubmit = ({ title, year, format, stars }) => {
     dispatch(
       addMovie({
@@ -72,11 +73,4 @@ const AddMovie = ({ dispatch }) => {
   );
 };
 
-AddMovie.propTypes = {
-  dispatch: func,
-  handleSubmit: func,
-};
-
-const mapDispatchToProps = (dispatch) => ({ dispatch });
-
-export default connect(mapDispatchToProps)(AddMovie);
+export default AddMovie;

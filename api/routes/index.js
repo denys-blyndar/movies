@@ -22,7 +22,7 @@ router.post('/add-movie', (req, res) => {
 });
 
 router.delete('/movies/:id', (req, res) => {
-  Movie.findOneAndDelete({ _id: ObjectId(req.params.id) })
+  Movie.findOneAndDelete({ _id: new ObjectId(req.params.id) })
     .then((result) => res.send({ id: result._id }))
     .catch((error) => res.send(error));
 });

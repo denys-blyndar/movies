@@ -14,6 +14,8 @@ module.exports = {
   module: {
     rules: [
       {
+        // TODO: https://babeljs.io/docs/en/babel-plugin-transform-react-jsx
+        // Add `{ runtime: 'automatic' }` babel-loader option to support react jsx transform in runtime
         test: /\.(js|jsx)$/,
         use: ['babel-loader'],
         exclude: /node_modules/,
