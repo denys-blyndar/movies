@@ -1,19 +1,19 @@
-import './custom-button.css';
+import './custom-button.sass';
 
-import React from 'react';
-import { func, string, bool } from 'prop-types';
+import { object, func, string, bool } from 'prop-types';
 
-// TODO: Make props pass to `button` with ...rest operator
-// TODO: Read about rest/spread operators. Understand difference between them.
-const CustomButton = ({ type, text, onClick, disabled }) => {
+const CustomButton = (props) => {
+  const { button, type, text, onClick, disabled } = props;
+
   return (
-    <button className="button" type={type} onClick={onClick} disabled={disabled}>
+    <button className="custom-button" type={type} onClick={onClick} disabled={disabled} {...button}>
       {text}
     </button>
   );
 };
 
 CustomButton.propTypes = {
+  button: object,
   type: string,
   text: string,
   onClick: func,

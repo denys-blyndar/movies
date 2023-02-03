@@ -1,2 +1,1 @@
-import CustomButton from './custom-button';
-export default CustomButton;
+export { default } from './custom-button';

@@ -7,12 +7,11 @@
 - Client: React.js<br>
 - State management: Redux.js<br>
 - Compiler: Babel<br>
-- Bundler: Webpak<br>
+- Bundler: Webpack<br>
 - Pattern management: ESLint<br>
 
 ### Prerequisites
 
-- Windows 10 OS
 - MongoDB - [Download & Install MongoDB](https://docs.mongodb.com/manual/administration/install-community/)
 - Node.js - [Download & Install Node.js](https://nodejs.org/en/download/)
 

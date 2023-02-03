@@ -1,13 +1,13 @@
-import './home.css';
+import './home.sass';
 
-import React, { Component } from 'react';
+import { Component } from 'react';
 import { func, array } from 'prop-types';
 import { connect } from 'react-redux';
 
 import SearchBar from '../search-bar';
 import Modal from '../../shared/modal';
-import CustomButton from '../../shared/custom-button';
 import DeleteIcon from '../../icons/delete-icon.svg';
+import CustomButton from '../../shared/custom-button';
 import { deleteMovie } from '../../store/actions';
 
 class Home extends Component {
@@ -28,20 +28,22 @@ class Home extends Component {
       this.setState({ movies: sort ? data.reverse() : data });
     };
 
-    const sanitizeMovieValue = (value) => value.toString().toLowerCase();
-
     const getSearchCondition = (movie, query) => {
-      if (!movie) {
-        return false;
+      const sanitizeMovieValue = (value) => value.toString().toLowerCase();
+
+      if (movie) {
+        return Object.keys(movie).some((key) => {
+          if (Array.isArray(movie[key])) {
+            movie[key].some((star) => {
+              return sanitizeMovieValue(star.includes(query));
+            });
+          }
+
+          return sanitizeMovieValue(movie[key]).includes(query);
+        });
       }
 
-      return Object.keys(movie).some((key) => {
-        if (Array.isArray(movie[key])) {
-          return movie[key].some((arr) => arr.includes(query));
-        }
-
-        return sanitizeMovieValue(movie[key]).includes(query);
-      });
+      return false;
     };
 
     const searchMovie = (value) => {
@@ -49,71 +51,6 @@ class Home extends Component {
         movies: value
           ? movies.filter((movie) => getSearchCondition(movie, value))
           : this.props.movies,
-      });
-    };
-
-    // TODO: Move to component `selected-movie`
-    const renderItem = () => {
-      return (
-        <div className="movie-shown">
-          <div className="movie-shown__title">
-            <p>
-              <b>{selectedMovie.title}</b>
-            </p>
-          </div>
-          <p>
-            <b>Year: </b>
-            {selectedMovie.year}
-          </p>
-          <p>
-            <b>Format: </b>
-            {selectedMovie.format}
-          </p>
-          <p>
-            <b>Stars: </b>
-            {selectedMovie.stars.map((star) => star.trim()).join(', ')}
-          </p>
-        </div>
-      );
-    };
-
-    // TODO: Move to separate component `list`
-    const renderList = () => {
-      return movies.map((movie) => {
-        return (
-          <div
-            key={movie._id}
-            className="movie-wrapper"
-            onClick={() => this.setState({ selectedMovie: movie })}
-          >
-            <div className="movie-wrapper__movie">
-              <p>
-                <b>Title: </b>
-                {movie.title}
-              </p>
-              <p>
-                <b>Year: </b>
-                {movie.year}
-              </p>
-              <p>
-                <b>Format: </b>
-                {movie.format}
-              </p>
-              <p>
-                <b>Stars: </b>
-                {movie.stars.map((star) => star.trim()).join(', ')}
-              </p>
-            </div>
-            <div className="movie-wrapper__icon">
-              <DeleteIcon
-                onClick={() => {
-                  this.setState({ modalOpen: true });
-                  this.setState({ movieId: movie._id });
-                }}
-              />
-            </div>
-          </div>
-        );
       });
     };
 
@@ -137,11 +74,66 @@ class Home extends Component {
               sortMovies(movies);
             }}
           />
-          {selectedMovie && renderItem()}
+          {selectedMovie && (
+            <div className="movie-shown">
+              <div className="movie-shown__title">
+                <p>
+                  <b>{selectedMovie.title}</b>
+                </p>
+              </div>
+              <p>
+                <b>Year: </b>
+                {selectedMovie.year}
+              </p>
+              <p>
+                <b>Format: </b>
+                {selectedMovie.format}
+              </p>
+              <p>
+                <b>Stars: </b>
+                {selectedMovie.stars.map((star) => star.trim()).join(', ')}
+              </p>
+            </div>
+          )}
         </div>
-        <div className="home__movies-list">
+        <div className="home__movie-list">
           {movies && movies.length ? (
-            renderList()
+            movies.map((movie) => {
+              return (
+                <div
+                  key={movie._id}
+                  className="movie-wrapper"
+                  onClick={() => this.setState({ selectedMovie: movie })}
+                >
+                  <div className="movie-wrapper__movie">
+                    <p>
+                      <b>Title: </b>
+                      {movie.title}
+                    </p>
+                    <p>
+                      <b>Year: </b>
+                      {movie.year}
+                    </p>
+                    <p>
+                      <b>Format: </b>
+                      {movie.format}
+                    </p>
+                    <p>
+                      <b>Stars: </b>
+                      {movie.stars.map((star) => star.trim()).join(', ')}
+                    </p>
+                  </div>
+                  <div className="movie-wrapper__icon">
+                    <DeleteIcon
+                      onClick={() => {
+                        this.setState({ modalOpen: true });
+                        this.setState({ movieId: movie._id });
+                      }}
+                    />
+                  </div>
+                </div>
+              );
+            })
           ) : (
             <div className="there-are-no-movies">
               <p>There are no movies to display</p>

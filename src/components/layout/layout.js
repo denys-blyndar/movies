@@ -1,6 +1,5 @@
-import './layout.css';
+import './layout.sass';
 
-import React from 'react';
 import { object } from 'prop-types';
 
 import Header from '../../shared/header';

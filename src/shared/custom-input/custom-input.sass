@@ -1,0 +1,52 @@
+.input-wrapper
+  position: relative
+
+  .custom-input
+    height: 35px
+    padding: 0 12px
+    font-size: 14px
+    font-weight: 500
+    font-family: 'Open Sans', sans-serif
+    width: 300px
+    border: 1px solid #d9dce1
+    border-radius: 2px
+    line-height: 20px
+    letter-spacing: 0.5px
+    color: #3b3a3e
+    caret-color: #3b3a3e
+    cursor: default
+
+    &:hover
+      cursor: default
+      border-color: #65a0d6
+      transition: 0.3s ease-out
+
+    &:focus
+      cursor: text
+      border-color: #3b3a3e
+      outline: none
+
+    &::placeholder
+      color: #65a0d6
+
+    &:hover::placeholder 
+      color: #d9dce1
+
+    &:focus::placeholder
+      color: transparent
+
+  .validate-error
+    position: absolute
+    font-size: 14px
+    font-weight: 500
+    font-family: 'Open Sans', sans-serif
+    line-height: 20px
+    letter-spacing: 0.5px
+    color: #ff5722
+
+.errors-container
+  .custom-input
+    border: 1px solid #ff5722
+
+    &::placeholder
+      color: #d9dce1

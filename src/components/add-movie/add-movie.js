@@ -1,6 +1,5 @@
-import './add-movie.css';
+import './add-movie.sass';
 
-import React from 'react';
 import { Form, Field } from 'react-final-form';
 import { useDispatch } from 'react-redux';
 

@@ -1,6 +1,5 @@
-import './custom-input.css';
+import './custom-input.sass';
 
-import React from 'react';
 import { object, func, string } from 'prop-types';
 
 const CustomInput = (props) => {

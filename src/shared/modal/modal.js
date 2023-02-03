@@ -1,6 +1,6 @@
-import './modal.css';
+import './modal.sass';
 
-import React, { Component } from 'react';
+import { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { func, bool, string } from 'prop-types';
 

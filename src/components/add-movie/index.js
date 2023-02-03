@@ -1,2 +1,1 @@
-import AddMovie from './add-movie';
-export default AddMovie;
+export { default } from './add-movie';

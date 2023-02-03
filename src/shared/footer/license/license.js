@@ -1,6 +1,4 @@
-import './license.css';
-
-import React from 'react';
+import './license.sass';
 
 const License = () => {
   return (

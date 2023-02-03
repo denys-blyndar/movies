@@ -1,6 +1,5 @@
-import './footer.css';
+import './footer.sass';
 
-import React from 'react';
 import { Link } from 'react-router-dom';
 
 import Logo from '../../icons/logo.svg';

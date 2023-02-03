@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import { Router, Route, Switch } from 'react-router-dom';
 import { func, array } from 'prop-types';
 import { Toaster } from 'react-hot-toast';

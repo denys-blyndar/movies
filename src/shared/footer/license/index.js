@@ -1,2 +1,1 @@
-import License from './license';
-export default License;
+export { default } from './license';

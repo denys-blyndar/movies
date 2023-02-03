@@ -1,6 +1,6 @@
-import './search-bar.css';
+import './search-bar.sass';
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { func } from 'prop-types';
 
 import CustomInput from '../../shared/custom-input';

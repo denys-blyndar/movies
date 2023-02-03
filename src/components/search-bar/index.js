@@ -1,2 +1,1 @@
-import SearchBar from './search-bar';
-export default SearchBar;
+export { default } from './search-bar';

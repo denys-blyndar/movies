@@ -1,6 +1,5 @@
-import './header.css';
+import './header.sass';
 
-import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 
 import Logo from '../../icons/logo.svg';

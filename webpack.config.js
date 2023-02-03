@@ -14,26 +14,28 @@ module.exports = {
   module: {
     rules: [
       {
-        // TODO: https://babeljs.io/docs/en/babel-plugin-transform-react-jsx
-        // Add `{ runtime: 'automatic' }` babel-loader option to support react jsx transform in runtime
         test: /\.(js|jsx)$/,
-        use: ['babel-loader'],
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env', ['@babel/preset-react', { runtime: 'automatic' }]],
+            plugins: ['@babel/plugin-proposal-class-properties'],
+          },
+        },
         exclude: /node_modules/,
       },
       {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
+        test: /\.s[ac]ss$/i,
+        use: ['style-loader', 'css-loader', 'resolve-url-loader', 'sass-loader'],
       },
       {
         test: /\.(png|jpe?g|gif)$/i,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: '[path][name].[ext]',
-            },
+        use: {
+          loader: 'file-loader',
+          options: {
+            name: '[path][name].[ext]',
           },
-        ],
+        },
       },
       {
         test: /\.svg$/,

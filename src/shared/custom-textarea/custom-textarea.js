@@ -1,6 +1,5 @@
-import './custom-textarea.css';
+import './custom-textarea.sass';
 
-import React from 'react';
 import { object, string } from 'prop-types';
 
 const CustomTextArea = (props) => {
