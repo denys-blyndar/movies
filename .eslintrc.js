@@ -8,6 +8,9 @@ module.exports = {
     ecmaFeatures: {
       jsx: true,
     },
+    babelOptions: {
+      presets: ['@babel/preset-react']
+    },
   },
 
   env: {
@@ -33,6 +36,8 @@ module.exports = {
     'class-methods-use-this': 'off',
     'max-len': ['error', { code: 140 }],
     'object-curly-spacing': ['error', 'always'],
+    'react/jsx-uses-react': 'off',
+    'react/react-in-jsx-scope': 'off'
   },
 
   settings: {
