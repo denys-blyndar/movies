@@ -3,7 +3,9 @@ const HtmlWebPackPlugin = require('html-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
 
 module.exports = {
-  entry: './src/index.js',
+  entry: './src/index.jsx',
+
+  stats: 'detailed',
 
   devServer: {
     historyApiFallback: true,
@@ -18,8 +20,11 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env', ['@babel/preset-react', { runtime: 'automatic' }]],
-            plugins: ['@babel/plugin-proposal-class-properties'],
+            presets: ['@babel/preset-env'],
+            plugins: [
+              '@babel/plugin-proposal-class-properties',
+              ['@babel/plugin-transform-react-jsx', { runtime: 'automatic' }],
+            ],
           },
         },
         exclude: /node_modules/,
