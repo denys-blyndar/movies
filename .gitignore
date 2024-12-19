@@ -1,15 +1,45 @@
 # dependencies
-node_modules
+node_modules/
 
 # environment
-.idea
+.env
 
-# production
-dist
+# build output
+dist/
+build/
 
-# misc
-.DS_Store
+# public files
+public/
 
-# log
+# Sass and CSS generated files
+*.sass-cache/
+*.css.map
+*.sass.map
+
+# logs
 npm-debug.log*
-npm-error.log*
+*.log
+
+# OS specific files
+.DS_Store
+Thumbs.db
+
+# IDE-specific files
+.idea/
+.vscode/
+
+# lock files (depending on your package manager preference)
+package-lock.json
+
+# miscellaneous
+*.tmp
+*.temp
+
+# Prettier
+.prettierignore
+
+# ESLint
+.eslintcache
+
+# Webpack
+.cache/

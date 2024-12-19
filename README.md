@@ -1,52 +1,78 @@
-### About
+# Movies Storage
 
-<b>Movies Storage</b>
+A full-stack movie management application that lets users add, edit, delete, and search for movies.
 
-- Database: MongoDB<br>
-- Server: Node.js<br>
-- Client: React.js<br>
-- State management: Redux.js<br>
-- Compiler: Babel<br>
-- Bundler: Webpack<br>
-- Pattern management: ESLint<br>
+## Features
 
-### Prerequisites
+- Add, edit, delete movies
+- Search movies by title, year, format, and stars
+- Responsive UI
 
-- MongoDB - [Download & Install MongoDB](https://docs.mongodb.com/manual/administration/install-community/)
-- Node.js - [Download & Install Node.js](https://nodejs.org/en/download/)
+## Technologies Used
 
-In the command prompt run the following commands: 
+- **Database**: MongoDB
+- **Backend**: Node.js (Express.js)
+- **Frontend**: React.js
+- **State Management**: Redux.js
+- **Compiler**: Babel
+- **Bundler**: Webpack
+- **Linter**: ESLint
 
-```sh
-mkdir -p /data/db
-```
+## Prerequisites
 
-to create a data directory if you don't have one
+Before running the project, ensure you have the following installed:
 
-```sh
-mongod
-```
+- **MongoDB**: [Download & Install MongoDB](https://docs.mongodb.com/manual/administration/install-community/)
+- **Node.js**: [Download & Install Node.js](https://nodejs.org/en/download/)
 
-to run MongoDB
+## Setup
 
-In the project directory run the following scripts:
+### MongoDB
+
+1. Create a MongoDB data directory (if not existing):
+   ```sh
+   mkdir -p /data/db
+   ```
+2. Start MongoDB:
+   ```sh
+   mongod
+   ```
+
+### .env Setup
+
+1. Create a `.env` file in the root of the project with the following content:
+   ```env
+   REACT_APP_API_URL=http://localhost:3000
+   PORT=3000
+   DB_URI=mongodb://localhost:27017/movies
+   ```
+
+### Install Dependencies
+
+In the project directory, run:
 
 ```sh
 npm install
 ```
 
-to install dependencies
+### Running the Application
+
+Start the Backend (API)
 
 ```sh
 npm run start
 ```
 
-to start the API
+Start the Frontend (Webpack Dev Server)
 
 ```sh
 npm run dev
 ```
 
-to start the webpack dev server
+Open http://localhost:8080 to view the application.
 
-The browser opens up http://localhost:8080 to view the application. To start interacting with the application click `Add movie` from the header to add content to the home page. You can also make a search according to such criteria as title, year, format, and stars. 
+### Usage
+
+- To add a movie: Click Add Movie in the header.
+- Search movies by title, year, format, or stars.
+- Edit or delete existing movies.

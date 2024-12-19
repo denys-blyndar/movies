@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "ES6",                              // Output JavaScript target
+    "module": "commonjs",                         // Module system
+    "moduleResolution": "node",                   // Resolve modules like Node.js
+    "typeRoots": ["node_modules/@types/dotenv"],  // Use type definitions in node_modules/@types/dotenv
+    "esModuleInterop": true,                      // Allow default imports from CommonJS modules
+    "strict": true,                               // Enable all strict type-checking options
+    "outDir": "./dist",                           // Output folder for compiled files
+    "rootDir": "./",                               // Root folder for TypeScript source files
+    "jsx": "react-jsx"
+  },
+  "include": ["**/*"],                            //Include all TypeScript files in the project folder
+  "exclude": ["node_modules", "dist"]             // Exclude node_modules and dist folders
+}

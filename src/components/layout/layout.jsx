@@ -2,8 +2,8 @@ import './layout.sass';
 
 import { object } from 'prop-types';
 
-import Header from '../../shared/header';
-import Footer from '../../shared/footer';
+import Header from '../header';
+import Footer from '../footer';
 
 const Layout = ({ children }) => {
   return (

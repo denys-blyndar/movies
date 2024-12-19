@@ -1,32 +1,43 @@
 import './search-bar.sass';
 
-import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { func } from 'prop-types';
 
-import CustomInput from '../../shared/custom-input';
+import Input from '../input';
+import Button from '../button';
 import MagnifyIcon from '../../icons/magnify-icon.svg';
+import { changeSearchValue } from '../../store';
 
 const SearchBar = ({ onSubmit }) => {
-  const [value, setValue] = useState('');
+  const dispatch = useDispatch();
+  const value = useSelector((state) => state.movies.searchValue);
 
-  const onFormSubmit = (event) => {
+  const handleSearchSubmit = (event) => {
     event.preventDefault();
     onSubmit(value.toLowerCase());
   };
 
+  const handleSearchClear = () => {
+    dispatch(changeSearchValue(''));
+    onSubmit('');
+  };
+
   return (
     <div className="search-bar">
-      <form onSubmit={onFormSubmit}>
+      <form onSubmit={handleSearchSubmit}>
         <div className="search-bar__input-group">
-          <CustomInput
+          <Input
             type="text"
-            value={value}
             placeholder="Movie search"
-            onChange={(event) => setValue(event.target.value)}
+            value={value}
+            onChange={(event) => dispatch(changeSearchValue(event.target.value))}
           />
         </div>
-        <div className="search-bar__input-icon">
-          <MagnifyIcon onClick={onFormSubmit} />
+        <div className="search-bar__input-search">
+          <MagnifyIcon onClick={handleSearchSubmit} />
+        </div>
+        <div className="search-bar__input-clear">
+          {value && <Button text="x" onClick={handleSearchClear} />}
         </div>
       </form>
     </div>
